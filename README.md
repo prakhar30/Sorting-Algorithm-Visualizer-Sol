@@ -12,6 +12,7 @@ Algorithms covered so far:
 | Insertion Sort | insertion_sort |
 | Heap Sort | heap_sort |
 | Merge Sort | merge_sort |
+| Comb Sort | comb_sort |
 
 # Usage:
 
@@ -28,7 +29,7 @@ Pass function name as a command line argument from list of functions above
 
 **For example:** 
 
-```python main.py quick_sort```
+```python main.py comb_sort```
 
 # How to contribute
 

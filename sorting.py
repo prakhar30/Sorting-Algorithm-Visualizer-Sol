@@ -5,7 +5,6 @@ test = False
 
 
 class Array:
-
     full_array = None
 
     def plot(self):
@@ -30,7 +29,10 @@ class Array:
     def swap(self, index1, index2):
         self.values[index2], self.values[index1] = self.values[index1], self.values[index2]
         Array.full_array[self.lower_index + index2], Array.full_array[self.lower_index +
-                                                                      index1] = Array.full_array[self.lower_index + index1], Array.full_array[self.lower_index + index2]
+                                                                      index1] = Array.full_array[
+                                                                                    self.lower_index + index1], \
+                                                                                Array.full_array[
+                                                                                    self.lower_index + index2]
         self.plot()
 
     def set(self, index, num):
@@ -40,6 +42,40 @@ class Array:
 
     def get_len(self):
         return len(self.values)
+
+
+def comb_sort(nums):
+    def get_next_gap(gap):
+        gap = (gap * 10) / 13
+        if gap < 1:
+            return 1
+        return int(gap)
+
+    def _comb_sort(nums):
+        n = nums.get_len()
+
+        # initialize the first gap
+        gap = n
+
+        # initialize swapped as true to run first time
+        swapped = True
+
+        # run while gap is more than 1 and last iteration caused a swap
+        while gap != 1 or swapped == 1:
+
+            # get next gap
+            gap = get_next_gap(gap)
+
+            # initialize swapped as false so that we can check if swap happened or not
+            swapped = False
+
+            # compare all elements with current gap
+            for i in range(0, n - gap):
+                if nums.values[i] > nums.values[i + gap]:
+                    nums.swap(i, i + gap)
+                    swapped = True
+
+    _comb_sort(nums)
 
 
 def bubble_sort(nums):  # n^2
